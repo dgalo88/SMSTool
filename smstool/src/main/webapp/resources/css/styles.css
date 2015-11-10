@@ -1,0 +1,22 @@
+@CHARSET "UTF-8";
+
+.navbar-nav {
+	width: 50%;
+}
+
+.navbar-nav>li {
+	width: 17%;
+}
+
+.navbar-default .navbar-brand {
+	padding: 5px 15px 0 15px;
+}
+
+.footer {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	height: 70px;
+	background-color: #73BF4D;
+	color: #ffffff;
+}
