@@ -22,8 +22,8 @@
 	<!-- HTML5 shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
-		<script src="/sc-caeb2/js/html5shiv.min.js"></script>
-		<script src="/sc-caeb2/js/respond.min.js"></script>
+		<script src="<c:url value="/resources/js/html5shiv.min.js"/>"></script>
+		<script src="<c:url value="/resources/js/respond.min.js"/>"></script>
 	<![endif]-->
 
 	<link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet" media="screen">
