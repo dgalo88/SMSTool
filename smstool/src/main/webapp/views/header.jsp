@@ -2,6 +2,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 
 <!DOCTYPE html>
 
@@ -11,7 +12,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<title>Systematic Measurement System (SMS) Tool</title>
+	<title><spring:message code="smstool.title" text="Systematic Measurement System (SMS) Tool"/></title>
 
 <%-- 	<link rel="shortcut icon" href="<c:url value="/resources/images/favicon.ico"/>"> --%>
 
@@ -31,12 +32,11 @@
 
 	<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/notifications.js"/>" type="text/javascript"></script>
 </head>
 
 <body>
 
+	<div class="alert alert-dismissible notification hidden" role="alert" id="notification"></div>
+
 	<%@include file="navbar.jsp"%>
-	
-	<div class="container">
-		<h3>Systematic Measurement System (SMS) Tool</h3>
-	</div>
