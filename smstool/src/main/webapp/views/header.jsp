@@ -37,7 +37,7 @@
 
 <script type="text/javascript">
 <!-- init tooltip -->
-$(document).ready(function(){
+$(document).ready(function() {
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
