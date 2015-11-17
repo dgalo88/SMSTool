@@ -19,9 +19,20 @@ public class Person {
 	private String lastname;
 	private String email;
 	private String gender;
-
+	private String actions;
+	
 	private User user;
+	
+	public Person() { }
 
+	public Person(String firstname, String lastname, String email, String gender, User user) {
+		this.firstname = firstname;
+		this.lastname = lastname;
+		this.email = email;
+		this.gender = gender;
+		this.user = user;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
@@ -64,6 +75,14 @@ public class Person {
 		this.gender = gender;
 	}
 
+	public String getActions() {
+		return actions;
+	}
+
+	public void setActions(String actions) {
+		this.actions = actions;
+	}
+	
 	@OneToOne
 	public User getUser() {
 		return user;
@@ -71,6 +90,16 @@ public class Person {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	@Override
+	public String toString() {
+		return "{\"person\":[{ \"id\":" + "\"" + id + "\", " + 
+						"\"firstname\":" + "\"" + firstname + "\", "  +
+						"\"lastname\":" + "\"" + lastname + "\", " +
+						"\"email\":" + "\"" + email + "\", " +
+						"\"gender\":" + "\"" + gender + "\"}" +
+						"]}";
 	}
 
 }

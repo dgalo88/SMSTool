@@ -18,6 +18,12 @@ public class Student {
 
 	private Person person;
 
+	public Student() { 	}
+
+	public Student(Person person) {
+		this.person = person;
+	}
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	public int getId() {
