@@ -17,7 +17,7 @@ public class CreateSurveyController {
 	@RequestMapping(value="/createSurvey")
 	public ModelAndView createSurvey(HttpServletRequest request, HttpServletResponse response) //
 			throws ServletException, IOException {
-		System.out.println(".................... Bíennnnn");
+//		System.out.println(".................... Bíennnnn");
 
 		return new ModelAndView("createSurvey");
 
