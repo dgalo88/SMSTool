@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 
+import javax.mail.internet.MimeMessage;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,6 +13,9 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
+import org.springframework.mail.javamail.MimeMessagePreparator;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,6 +26,7 @@ import com.venebel.smstool.database.Student;
 import com.venebel.smstool.database.User;
 import com.venebel.smstool.database.dao.StudentDAOImpl;
 import com.venebel.smstool.util.TableUtils;
+import com.venebel.smstool.util.TextUtils;
 
 @Controller
 @RequestMapping("/student")
@@ -29,7 +34,9 @@ public class StudentController {
 	
 	@Autowired  
 	private MessageSource messageSource;
-	
+	@Autowired
+	private JavaMailSender mailSender;
+	 
 	@RequestMapping(value="/listStudent", method = RequestMethod.GET)
 	public ModelAndView listStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException {
 		
@@ -73,11 +80,23 @@ public class StudentController {
 		String className = request.getParameter("nameClass");
 		String gender = request.getParameter("gender");
 		
-		Student student = new Student(new Person(firstName, lastName, email, gender, new User()), className);
+		User user = new User(firstName.toLowerCase(), TextUtils.generatePassword());
+		Student student = new Student(new Person(firstName, lastName, email, gender, user), className);
 		
 		StudentDAOImpl daoImpl = new StudentDAOImpl();
 		daoImpl.addStudent(student);
-		
+        
+        mailSender.send(new MimeMessagePreparator() {
+			@Override
+			public void prepare(MimeMessage mimeMessage) throws Exception {
+				MimeMessageHelper message = new MimeMessageHelper(mimeMessage, true, "UTF-8");
+			    message.setTo(email);
+			    message.setSubject(messageSource.getMessage("smstool.email.subject", null, null));
+			    message.setText(messageSource.getMessage("smstool.email.body", 
+    							new Object[] { firstName, lastName, user.getUsername(), user.getPassword() }, null), true);
+			}
+		});
+	
 		return "redirect:listStudent";
 	}
 
