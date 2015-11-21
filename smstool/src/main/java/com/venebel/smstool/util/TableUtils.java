@@ -57,14 +57,14 @@ public class TableUtils {
 	 * @param messageSource messages from properties.
 	 * @return HTML with actions for table.
 	 */
-	public static String buildButtonsActions(MessageSource messageSource) {
+	public static String buildButtonsActions(int id, MessageSource messageSource) {
 		
 		return new String("<div class='wrapper text-center'> "
 						 + "<div class='btn-group centered'> "
-						 + "<a class='btn btn-default view' role='button' data-toggle='tooltip' title='" + messageSource.getMessage("smstool.button.edit", null, null) + "'> "
+						 + "<a id=" + id + " class='btn btn-default edit' role='button' data-toggle='tooltip' title='" + messageSource.getMessage("smstool.button.edit", null, null) + "'> "
 						 + "<span class='glyphicon glyphicon-search'></span> "
 						 + "</a> "
-						 + "<a class='btn btn-default delete' role='button' data-toggle='tooltip' title='" + messageSource.getMessage("smstool.button.delete", null, null) + "'> "
+						 + "<a id=" + id + " class='btn btn-default delete' role='button' data-toggle='tooltip' title='" + messageSource.getMessage("smstool.button.delete", null, null) + "'> "
 						 + "<span class='glyphicon glyphicon-remove'></span> "
 						 + "</a> "
 						 + "</div> "

@@ -21,6 +21,9 @@
 	<!-- Bootstrap -->
 	<link href="<c:url value="/resources/css/bootstrap.min.css"/>" rel="stylesheet" media="screen">
 
+	<!-- FormValidation CSS file -->
+	<link href="<c:url value="/resources/css/formValidation.min.css"/>" rel="stylesheet">
+
 	<!-- HTML5 shiv and Respond.js for IE8 support of HTML5 elements and media queries -->
 	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 	<!--[if lt IE 9]>
@@ -32,12 +35,16 @@
 
 	<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
+	<!-- FormValidation plugin and the class supports validating Bootstrap form -->
+	<script src="<c:url value="/resources/js/formValidation.min.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/framework/bootstrap.js"/>" type="text/javascript"></script>
+	
 	<script src="<c:url value="/resources/js/notifications.js"/>" type="text/javascript"></script>
 </head>
 
 <script type="text/javascript">
 <!-- init tooltip -->
-$(document).ready(function() {
+$(document).on('ready', function() {
     $('[data-toggle="tooltip"]').tooltip(); 
 });
 </script>
@@ -45,5 +52,6 @@ $(document).ready(function() {
 <body>
 
 	<div class="alert alert-dismissible notification hidden" role="alert" id="notification"></div>
-
+	
 	<%@include file="navbar.jsp"%>
+	<%@include file="include/modal.jsp" %>
