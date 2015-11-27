@@ -22,9 +22,11 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.venebel.smstool.database.Person;
+import com.venebel.smstool.database.Role;
 import com.venebel.smstool.database.Student;
 import com.venebel.smstool.database.User;
 import com.venebel.smstool.database.dao.StudentDAOImpl;
+import com.venebel.smstool.util.Constants;
 import com.venebel.smstool.util.TableUtils;
 import com.venebel.smstool.util.TextUtils;
 
@@ -80,7 +82,7 @@ public class StudentController {
 		String className = request.getParameter("nameClass");
 		String gender = request.getParameter("gender");
 		
-		User user = new User(firstName.toLowerCase(), TextUtils.generatePassword());
+		User user = new User(firstName.toLowerCase(), TextUtils.generatePassword(), new Role(Constants.ROLE_STUDENT));
 		Student student = new Student(new Person(firstName, lastName, email, gender, user), className);
 		
 		StudentDAOImpl daoImpl = new StudentDAOImpl();
@@ -113,7 +115,7 @@ public class StudentController {
 		    json.put("message", messageSource.getMessage("smstool.student.delete.success", null, null));
 		} catch (Exception e) { 
 			System.out.println("Error delete student. " + e.getMessage());
-		    json.put("message", messageSource.getMessage("smstool.student.error.admin", null, null));
+		    json.put("message", messageSource.getMessage("smstool.message.error.admin", null, null));
 		}
 		
 		response.getWriter().write(json.toString());

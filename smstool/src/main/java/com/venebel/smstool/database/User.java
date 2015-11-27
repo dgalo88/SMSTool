@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Proxy;
@@ -17,11 +18,14 @@ public class User {
 	private String username;
 	private String password;
 
+	private Role role;  
+	
 	public User() { }
 	
-	public User(String username, String password) {
+	public User(String username, String password, Role role) {
 		this.username = username;
 		this.password = password;
+		this.role = role;
 	}
 	
 	@Id
@@ -50,4 +54,13 @@ public class User {
 		this.password = password;
 	}
 
+	@OneToOne
+	public Role getRole() {  
+		return role;  
+	}
+
+	public void setRole(Role role) {  
+		this.role = role;  
+	}
+	
 }
