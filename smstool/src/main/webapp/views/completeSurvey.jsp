@@ -40,18 +40,17 @@ $( document ).ready(function() {
 <form class="form-horizontal" id="formSaveSurvey" action="<c:url value="<%=ExecuteConstants.SAVE_SURVEY%>" />" method="post">
 	<div id="survey_checked"></div>
 	<div class="container">
-		<br>
 		<div class="row">
 			<div class="col-sm-1">
 				<h1 class="glyphicon glyphicon-paste"></h1>
 			</div>
 			<div class="col-sm-11">
 				<h3><spring:message code='smstool.survey.complete.title' text='' /></h3>
-				<p><spring:message code='' text='Complete survey' /></p>
+				<p><spring:message code='smstool.survey.complete.description' text='Complete survey' /></p>
 			</div>
 		</div>
 		<br>
-		<div class="table-responsive" style="height: 350px;">
+		<div class="table-responsive" style="height: 340px;">
 			<%for (Survey survey : listSurveys) {%>
 				<table class="table table-bordered">
 					<tr bgcolor="B8AFAF">
@@ -67,7 +66,7 @@ $( document ).ready(function() {
 											<td><spring:message code='<%=question.getDescription()%>' text='' /></td>
 											<td align="center" width="10%">
 												<select class="form-control">
-  													<option data-toggle="tooltip" title="asdasdaasd">1</option>
+  													<option>1</option>
  												 	<option>2</option>
   													<option>3</option>
   													<option>4</option>

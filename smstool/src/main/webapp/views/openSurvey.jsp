@@ -7,8 +7,8 @@
 <script type="text/javascript">
 
 var dataSet = [
-               [ "Tiger Nixon", "<a href='#'><span class='glyphicon glyphicon-edit' title='<spring:message code='smstool.button.edit' text='' />'></span></a><a href='#'> <span class='glyphicon glyphicon-trash' title='<spring:message code='smstool.button.delete' text='' />'></span></a>"],
-               [ "Garrett Winters", "<a href='#'><span class='glyphicon glyphicon-edit' title='<spring:message code='smstool.button.edit' text='' />'></span></a><a href='#'> <span class='glyphicon glyphicon-trash' title='<spring:message code='smstool.button.delete' text='' />'></span></a>"]
+               [ "Test survey 1", "<a href='#'><span class='glyphicon glyphicon-edit' title='<spring:message code='smstool.button.edit' text='' />'></span></a><a href='#'> <span class='glyphicon glyphicon-trash' title='<spring:message code='smstool.button.delete' text='' />'></span></a>"],
+               [ "Test survey 2", "<a href='#'><span class='glyphicon glyphicon-edit' title='<spring:message code='smstool.button.edit' text='' />'></span></a><a href='#'> <span class='glyphicon glyphicon-trash' title='<spring:message code='smstool.button.delete' text='' />'></span></a>"]
            ];
            
 $(document).ready(function() {
@@ -31,7 +31,7 @@ $(document).ready(function() {
 			</div>
 			<div class="col-sm-11">
 				<h3><spring:message code='smstool.survey.open.title' text='' /></h3>
-				<p><spring:message code='' text='The survey' /></p>
+				<p><spring:message code='smstool.survey.open.description' text='The survey' /></p>
 			</div>
 		</div>
 		<br>
