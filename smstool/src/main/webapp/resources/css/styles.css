@@ -1,29 +1,28 @@
 @CHARSET "UTF-8";
 
-.navbar-nav {
-	width: 50%;
-}
-
-.navbar-nav > li {
-	width: 17%;
-}
-
 .navbar-default .navbar-brand {
 	padding: 5px 15px 0 15px;
 }
 
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
 .footer {
-	position: absolute;
-	bottom: 0;
+	/* Set the fixed height of the footer here */
+	height: 60px;
 	width: 100%;
-	height: 55px;
 	background-color: #73BF4D;
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
 	color: #ffffff;
 }
 
 .notification {
 	position: fixed;
-	top: 20%;
+	top: 18%;
 	right: 2%;
 	min-width: 300px;
 	width: 30%;

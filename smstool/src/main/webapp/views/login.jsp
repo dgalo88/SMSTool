@@ -1,13 +1,20 @@
 
 <%@include file="header.jsp"%>
 
-<div class="container">
+<style type="text/css">
+.loginLeftImage {
+ 	background: url(/SMSTool/resources/images/loginLeft.png) no-repeat top right;
+ 	height: 79vh;
+}
+</style>
 
-	<br><br>
+<div class="container-fluid">
 
-	<div class="row vertical-offset-100">
-		<div class="col-sm-4 col-sm-offset-4">
-			<div class="panel panel-default">
+	<div class="row">
+		<div class="col-xs-6 loginLeftImage"></div>
+		<div class="col-xs-6">
+			<br>
+			<div class="panel panel-default" style="width: 50%">
 				<div class="panel-heading">
 					<h3 class="panel-title">
 						<spring:message code="smstool.login.please" text="Please sign in"/>

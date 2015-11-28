@@ -24,8 +24,16 @@ $(document).ready(function() {
 
 <form class="form-horizontal" id="formSaveSurvey" action="<c:url value="<%=ExecuteConstants.SAVE_SURVEY%>" />" method="post">
 	<div class="container">
-		<h1 class="glyphicon glyphicon-align-justify" align="left"><spring:message code='smstool.survey.open.title' text='' /></h1>
 		<br>
+		<div class="row">
+			<div class="col-sm-1">
+				<h1 class="glyphicon glyphicon-paste"></h1>
+			</div>
+			<div class="col-sm-11">
+				<h3><spring:message code='smstool.survey.open.title' text='' /></h3>
+				<p><spring:message code='' text='The survey' /></p>
+			</div>
+		</div>
 		<br>
 		<table id="listSurvey" class="table table-striped table-bordered"></table>
 		
