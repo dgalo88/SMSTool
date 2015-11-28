@@ -33,14 +33,14 @@ $( document ).ready(function() {
 
 <%
 	
-	LoadSurvey loadSurvey=(LoadSurvey)request.getAttribute("loadSurvey");
-	ArrayList<Survey> listSurveys=loadSurvey.getListSurveys();
+// 	LoadSurvey loadSurvey=(LoadSurvey)request.getAttribute("loadSurvey");
+	ArrayList<Survey> listSurveys=(ArrayList<Survey>)request.getAttribute("loadSurvey");
 %>
 
 <form class="form-horizontal" id="formSaveSurvey" action="<c:url value="<%=ExecuteConstants.SAVE_SURVEY%>" />" method="post">
 	<div id="survey_checked"></div>
 	<div class="container">
-		<h1 class="glyphicon glyphicon-list-alt" align="left"><spring:message code='smstool.survey.title' text='' /></h1>
+		<h1 class="glyphicon glyphicon-list-alt" align="left"><spring:message code='smstool.survey.complete.title' text='' /></h1>
 		<br>
 		<br>
 		<div class="table-responsive" style="height: 350px;">
@@ -57,7 +57,17 @@ $( document ).ready(function() {
 									<%for (Question question : subcategory.getListQuestions()) { %>
 										<tr>
 											<td><spring:message code='<%=question.getDescription()%>' text='' /></td>
-											<td align="center" width="20%"><input type="checkbox" value="<%=question.getId()%>" checked></td>
+											<td align="center" width="10%">
+												<select class="form-control">
+  													<option data-toggle="tooltip" title="asdasdaasd">1</option>
+ 												 	<option>2</option>
+  													<option>3</option>
+  													<option>4</option>
+  													<option>5</option>
+  													<option>6</option>
+  													<option>7</option>
+												</select>
+											</td>
 										</tr>
 									<%}%>
 								</table>

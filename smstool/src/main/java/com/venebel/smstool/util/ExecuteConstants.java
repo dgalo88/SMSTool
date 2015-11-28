@@ -17,4 +17,6 @@ public class ExecuteConstants {
 	public static final String ACTION_EDIT_STUDENT = "/" + SERVLET_STUDENT + "/" + EDIT_STUDENT;
 	public static final String ACTION_UPDATE_STUDENT = "/" + SERVLET_STUDENT + "/" + UPDATE_STUDENT;
 	
+	public static final String SAVE_SURVEY = "saveSurvey";
+	
 }
