@@ -51,7 +51,8 @@ $(document).ready(function() {
 </script>
 
 <%
-	String studentJSON = (String) request.getAttribute("listStudents");	
+	String studentJSON = (String) request.getAttribute("listStudents");
+	System.out.println(studentJSON);
 %>
 
 <script type="text/javascript">
@@ -59,14 +60,28 @@ $(document).ready(function() {
 function loadDatatable() {
 
 	var jsonData = JSON.parse('<%= studentJSON%>');
-
 	$('#tableStudents').dataTable({
 		'scrollY': '450px',
 		'scrollCollapse': true,
+		'columnDefs': [{ 
+						"aTargets" : 3,
+		                "mRender": function ( data, type, full ) {
+		                 	return parseDateColumn(data);
+		                 }
+		             }],
 		'data': jsonData.data,
-		'columns': jsonData.columns
+		'columns': jsonData.columns,
 	});
 
+}
+
+function parseDateColumn(data) {
+	var date = new Date(data);
+	var day = date.getDate();
+	var month = date.getMonth()+1;
+	var year = date.getFullYear();
+
+    return (day < 10 ? "0"+day : day) + "/" + (month < 10 ? "0"+month : month) + "/" + year;
 }
 
 </script>

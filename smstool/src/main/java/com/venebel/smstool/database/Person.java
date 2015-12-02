@@ -1,5 +1,7 @@
 package com.venebel.smstool.database;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,17 +21,19 @@ public class Person {
 	private String lastname;
 	private String email;
 	private String gender;
+	private Date birthDate;
 	private String actions;
 	
 	private User user;
 	
 	public Person() { }
 
-	public Person(String firstname, String lastname, String email, String gender, User user) {
+	public Person(String firstname, String lastname, String email, String gender, Date birthDate, User user) {
 		this.firstname = firstname;
 		this.lastname = lastname;
 		this.email = email;
 		this.gender = gender;
+		this.birthDate = birthDate;
 		this.user = user;
 	}
 	
@@ -75,6 +79,14 @@ public class Person {
 		this.gender = gender;
 	}
 
+	public Date getBirthDate() {
+		return birthDate;
+	}
+
+	public void setBirthDate(Date birthDate) {
+		this.birthDate = birthDate;
+	}
+
 	public String getActions() {
 		return actions;
 	}
@@ -99,6 +111,7 @@ public class Person {
 						"\"lastname\":" + "\"" + lastname + "\", " +
 						"\"email\":" + "\"" + email + "\", " +
 						"\"gender\":" + "\"" + gender + "\"}" +
+						"\"birthdate\":" + "\"" + birthDate.toString() + "\"}" +
 						"]}";
 	}
 

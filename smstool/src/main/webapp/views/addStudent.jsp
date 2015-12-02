@@ -4,11 +4,26 @@
 
 <spring:message code="smstool.student.validation.firstName" var="firstName" text="First Name" />
 <spring:message code="smstool.student.validation.lastName" var="lastName" text="Last Name" />
+<spring:message code="smstool.student.birth" var="birth" text="Date Birth" />
 <spring:message code="smstool.student.email" var="email" text="Email" />
 <spring:message code="smstool.student.class" var="nameClass" text="Class" />
 <spring:message code="smstool.student.gender" var="gender" text="Gender" />
+
+<style type="text/css">
+#formSaveStudent .form-control-feedback {
+    top: 0;
+    right: -15px;
+}
+</style>
+
 <script>
 $(document).ready(function() {
+	
+	$('#datePicker')
+    	.datepicker({
+        	format: 'mm/dd/yyyy'
+    	});
+	
     $('#formSaveStudent').formValidation({
         framework: 'bootstrap',
         icon: {
@@ -20,7 +35,7 @@ $(document).ready(function() {
         	firstName: {
                 validators: {
                     notEmpty: {
-                        message: "<spring:message code='smstool.student.validation.empty' arguments='${firstName}' text='The first name is required' />"
+                        message: "<spring:message code='smstool.message.validation.empty' arguments='${firstName}' text='The first name is required' />"
                     },
                     stringLength: {
                         min: 1,
@@ -36,7 +51,7 @@ $(document).ready(function() {
         	lastName: {
                 validators: {
                     notEmpty: {
-                        message: "<spring:message code='smstool.student.validation.empty' arguments='${lastName}' text='The last name is required' />"
+                        message: "<spring:message code='smstool.message.validation.empty' arguments='${lastName}' text='The last name is required' />"
                     },
                     stringLength: {
                         min: 1,
@@ -49,10 +64,21 @@ $(document).ready(function() {
                     }
                 }
             },
+            birth: {
+                validators: {
+                    notEmpty: {
+                        message: "<spring:message code='smstool.message.validation.empty' arguments='${birth}' text='The date birth is required' />"
+                    },
+                    date: {
+                        format: 'MM/DD/YYYY',
+                        message: "<spring:message code='smstool.student.validation.birth' text='The date birth is required' />" 
+                    }
+                }
+            },
             email: {
                 validators: {
                     notEmpty: {
-                        message: "<spring:message code='smstool.student.validation.empty' arguments='${email}' text='The email is required' />"
+                        message: "<spring:message code='smstool.message.validation.empty' arguments='${email}' text='The email is required' />"
                     },
                     regexp: {
                         regexp: /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,4})+$/,
@@ -63,11 +89,15 @@ $(document).ready(function() {
             nameClass: {
                 validators: {
                     notEmpty: {
-                        message: "<spring:message code='smstool.student.validation.empty' arguments='${nameClass}' text='The class is required' />"
+                        message: "<spring:message code='smstool.message.validation.empty' arguments='${nameClass}' text='The class is required' />"
                     }
                 }
             }
         }
+    });
+    
+    $('#datePicker').on('changeDate', function (e) {
+        $('#formSaveStudent').formValidation('revalidateField', 'birth');
     });
 });
 </script>
@@ -110,6 +140,15 @@ $(document).ready(function() {
 							<input type="text" class="form-control" id="lastName" name="lastName" placeholder="${lastName}" value="<%= edit ? student.getPerson().getLastname() : ""%>">
 						</div>
 					</div>
+					<div class="form-group">
+        				<label class="control-label col-sm-2" for="birth">${birth}:</label>
+       					<div class="col-sm-4 date">
+            				<div class="input-group input-append date" id="datePicker">
+                				<input type="text" class="form-control" id="birth" name="birth" placeholder="${birth}" value="<%= edit ? student.getPerson().getBirthDate() : ""%>"/>
+                				<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+            				</div>
+        				</div>
+    				</div>
 					<div class="form-group">
 						<label class="control-label col-sm-2" for="email">${email}:</label>
 						<div class="col-sm-4">

@@ -32,12 +32,16 @@
 	<![endif]-->
 
 	<link href="<c:url value="/resources/css/styles.css"/>" rel="stylesheet" media="screen">
+	<link href="<c:url value="/resources/css/bootstrap-datepicker.min.css"/>" rel="stylesheet" media="screen">
 
 	<script src="<c:url value="/resources/js/jquery-2.1.4.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/resources/js/bootstrap.min.js"/>" type="text/javascript"></script>
 	<!-- FormValidation plugin and the class supports validating Bootstrap form -->
 	<script src="<c:url value="/resources/js/formValidation.min.js"/>" type="text/javascript"></script>
 	<script src="<c:url value="/resources/js/framework/bootstrap.js"/>" type="text/javascript"></script>
+	<!-- Datepicker -->
+	<script src="<c:url value="/resources/js/moment.js"/>" type="text/javascript"></script>
+	<script src="<c:url value="/resources/js/bootstrap-datepicker.min.js"/>" type="text/javascript"></script>
 	
 	<script src="<c:url value="/resources/js/notifications.js"/>" type="text/javascript"></script>
 </head>

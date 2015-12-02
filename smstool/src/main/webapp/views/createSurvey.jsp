@@ -19,7 +19,7 @@ $( document ).ready(function() {
 		});
 // 		$( "#survey_checked" ).empty();
 		if($('#survey_checked').is(':empty')){
-			showError("<spring:message code='smstool.student.validation.empty' arguments='${firstName}' text='The first name is required' />"); 
+			showError("<spring:message code='smstool.message.validation.empty' arguments='${firstName}' text='The first name is required' />"); 
 		}else{
 			$("#formSaveSurvey").submit();
 		}

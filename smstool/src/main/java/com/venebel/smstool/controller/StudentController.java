@@ -1,6 +1,8 @@
 package com.venebel.smstool.controller;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -22,7 +24,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.venebel.smstool.database.Person;
-import com.venebel.smstool.database.Role;
 import com.venebel.smstool.database.Student;
 import com.venebel.smstool.database.User;
 import com.venebel.smstool.database.dao.StudentDAOImpl;
@@ -59,6 +60,7 @@ public class StudentController {
 		columns.put("firstname", messageSource.getMessage("smstool.student.firstname", null, null));
 		columns.put("lastname", messageSource.getMessage("smstool.student.lastname", null, null));
 		columns.put("email", messageSource.getMessage("smstool.student.email", null, null));
+		columns.put("birthDate", messageSource.getMessage("smstool.student.birthdate", null, null));
 		columns.put("gender", messageSource.getMessage("smstool.student.gender", null, null));
 		columns.put("actions", messageSource.getMessage("smstool.table.actions", null, null));
 		
@@ -74,16 +76,17 @@ public class StudentController {
 	}
 	
 	@RequestMapping(value="/saveStudent", method = RequestMethod.POST)
-	public String saveStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException {
+	public String saveStudent(HttpServletRequest request, HttpServletResponse response) throws ServletException, ParseException {
 		
 		String firstName = request.getParameter("firstName");
 		String lastName = request.getParameter("lastName");
 		String email = request.getParameter("email");
 		String className = request.getParameter("nameClass");
+		String birthDate = request.getParameter("birth");
 		String gender = request.getParameter("gender");
 		
-		User user = new User(firstName.toLowerCase(), TextUtils.generatePassword(), new Role(Constants.ROLE_STUDENT));
-		Student student = new Student(new Person(firstName, lastName, email, gender, user), className);
+		User user = new User(email, TextUtils.generatePassword(), Constants.ROLE_STUDENT);
+		Student student = new Student(new Person(firstName, lastName, email, gender, new SimpleDateFormat(Constants.FORMAT_BIRTH_DATE).parse(birthDate), user), className);
 		
 		StudentDAOImpl daoImpl = new StudentDAOImpl();
 		daoImpl.addStudent(student);

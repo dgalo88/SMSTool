@@ -84,7 +84,6 @@
 
 		<!-- The mapping files -->
 
-		<mapping class="com.venebel.smstool.database.Role" />
 		<mapping class="com.venebel.smstool.database.User" />
 		<mapping class="com.venebel.smstool.database.Person" />
 		<mapping class="com.venebel.smstool.database.Teacher" />

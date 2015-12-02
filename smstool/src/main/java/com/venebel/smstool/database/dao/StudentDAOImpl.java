@@ -44,7 +44,6 @@ public class StudentDAOImpl implements StudentDAO {
         try { 
         	session = HibernateUtil.openSession(); 
         	transaction = session.beginTransaction();
-        	session.save(student.getPerson().getUser().getRole());
     		session.save(student.getPerson().getUser());
     		session.save(student.getPerson());
     		session.save(student);
@@ -71,7 +70,6 @@ public class StudentDAOImpl implements StudentDAO {
     		session.update(student);
     		session.update(student.getPerson());
     		session.update(student.getPerson().getUser());
-    		session.update(student.getPerson().getUser().getRole());
         	transaction.commit();
         	
     		System.out.println("Student updated successfully. Student id = " + student.getId() + ", details = " + student.getPerson());
@@ -97,7 +95,6 @@ public class StudentDAOImpl implements StudentDAO {
     			session.delete(student);
     			session.delete(student.getPerson());
         		session.delete(student.getPerson().getUser());
-        		session.delete(student.getPerson().getUser().getRole());
     			transaction.commit();
     		}
         	
